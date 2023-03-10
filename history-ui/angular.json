@@ -95,6 +95,130 @@
           }
         }
       }
+    },
+    "history-table": {
+      "projectType": "library",
+      "root": "projects/history-table",
+      "sourceRoot": "projects/history-table/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/history-table/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/history-table/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/history-table/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/history-table/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "history-table-component": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/history-table-component",
+      "sourceRoot": "projects/history-table-component/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/history-table-component",
+            "index": "projects/history-table-component/src/index.html",
+            "main": "projects/history-table-component/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/history-table-component/tsconfig.app.json",
+            "assets": [
+              "projects/history-table-component/src/favicon.ico",
+              "projects/history-table-component/src/assets"
+            ],
+            "styles": [
+              "projects/history-table-component/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "history-table-component:build:production"
+            },
+            "development": {
+              "browserTarget": "history-table-component:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "history-table-component:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/history-table-component/tsconfig.spec.json",
+            "assets": [
+              "projects/history-table-component/src/favicon.ico",
+              "projects/history-table-component/src/assets"
+            ],
+            "styles": [
+              "projects/history-table-component/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
     }
   }
 }
