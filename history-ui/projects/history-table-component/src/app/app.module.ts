@@ -1,6 +1,7 @@
 import { Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { createCustomElement } from '@angular/elements';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 import { HistoryTableComponent } from 'projects/history-table/src/public-api';
@@ -23,6 +24,7 @@ export abstract class WebComponentModule {
 @NgModule({
   imports: [
     BrowserModule,
+    DragDropModule,
     HistoryTableModule,
   ],
   entryComponents: [HistoryTableComponent]
