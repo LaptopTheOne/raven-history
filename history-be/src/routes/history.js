@@ -14,8 +14,11 @@ router.get('/bearer-token', (req, res, next) => {
 });
 
 router.get('/get-saved-items', (req, res, next) => {
-  console.log(req)
-  res.write('test');
+  console.log('req params', req.query)
+  const result = {
+    payload:'test'
+  }
+  res.write(JSON.stringify(result));
   res.end()
 });
 

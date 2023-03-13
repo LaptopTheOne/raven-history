@@ -1,9 +1,11 @@
 const path = require('path');
+const cors = require('cors')
 
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
+app.use(cors())
 
 const redditHistory = require('./routes/history');
 
