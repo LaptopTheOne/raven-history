@@ -3,8 +3,7 @@ const https = require('https');
 
 const express = require('express');
 const router = express.Router();
-
-const products = [];
+const savedItemsHelpers = require('../helpers/fetch-saved-items');
 
 router.get('/bearer-token', (req, res, next) => {
   console.log('acquiring bearer token for history scope...');
@@ -13,19 +12,13 @@ router.get('/bearer-token', (req, res, next) => {
   res.end();
 });
 
-router.get('/get-saved-items', (req, res, next) => {
+router.get('/get-saved-items', async (req, res, next) => {
   console.log('req params', req.query)
-  const result = {
-    payload:'test'
-  }
+  const username = req.query['username'];
+  const token = req.query['token'];
+  const result = await savedItemsHelpers.fetchAllSavedItems(username, token);
   res.write(JSON.stringify(result));
   res.end()
 });
-
-// /admin/add-product => POST
-// router.post('/add-product', (req, res, next) => {
-//   products.push({ title: req.body.title });
-//   res.redirect('/');
-// });
 
 exports.routes = router;
