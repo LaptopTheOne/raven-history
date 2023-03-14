@@ -39,7 +39,15 @@ const fetchAllSavedItems = async function (username, token) {
     afterParam = result.data.data.after
   }
 
-  return savedItems.flat();
+  // extract from data: subreddit, title, link_flair_text, url
+  return savedItems.flat().map((item) => {
+    return {
+      subreddit:item.data.subreddit,
+      title:item.data.title,
+      link_flair_text:item.data.link_flair_text,
+      url: item.data.url
+    }
+  });
 }
 
 exports.fetchAllSavedItems = fetchAllSavedItems;

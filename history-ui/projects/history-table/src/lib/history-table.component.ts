@@ -1,6 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
+interface SavedItem {
+  subreddit: string,
+  title: string,
+  link_flair_text: string,
+  url: string
+}
+
 @Component({
   selector: 'lib-history-table',
   templateUrl: './history-table.component.html',
@@ -8,12 +15,12 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class HistoryTableComponent implements OnInit {
   @Input()
-  savedItems: any = [];
-  done: any = [];
+  savedItems: SavedItem[] = [];
+  done: SavedItem[] = [];
 
   public ngOnInit(): void { }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<SavedItem[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
