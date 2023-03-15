@@ -18,20 +18,13 @@ export class HistoryTableComponent implements OnInit {
   savedItems: SavedItem[] = [];
   done: SavedItem[] = [];
 
+  listOfSubreddits = ['subreddit_1', 'subreddit_2', 'subreddit_3', 'subreddit_4', 'subreddit_5', 'subreddit_6',];
+
   public ngOnInit(): void {
     this.savedItems.forEach(item => console.log(item))
   }
 
   drop(event: CdkDragDrop<SavedItem[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
+    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   }
 }

@@ -1,23 +1,33 @@
-<div class="column-container">
-  <div class="column-title">Column</div>
-
-  <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="savedItems" [cdkDropListConnectedTo]="[doneList]"
-    class="column-list" (cdkDropListDropped)="drop($event)">
-    <div class="item-box" *ngFor="let item of savedItems" cdkDrag>
-      <div style="overflow-wrap: break-word;">{{item.title}}</div>
-      <div style="display: flex; justify-content: space-between; padding-top: 2px;">
-        <a [href]="item.url" target="_blank"><img src="./assets/link.svg" alt="link"></a>
-        <div>{{item.subreddit}}</div>
+<div class="main-history-container">
+  <div class="subreddit-list-history-container">
+    <div class="subreddit-list-title">Subreddits:</div>
+    <div class="subreddit-list-container">
+      <div *ngFor="let subreddit of listOfSubreddits" class="subreddit-list-item">
+        <div>
+          {{subreddit}}
+        </div>
+        <img src="./assets/show.svg" alt="show" style="height: 16px;">
+        <img src="./assets/hide.svg" alt="hide" style="height: 20px;">
       </div>
     </div>
   </div>
-</div>
+  <div class="column-container">
+    <div class="column-title">Column</div>
+    <div cdkDropList [cdkDropListData]="savedItems" class="column-list" (cdkDropListDropped)="drop($event)">
+      <div class="item-box" *ngFor="let item of savedItems" cdkDrag>
+        <div style="overflow-wrap: break-word;">{{item.title}}</div>
+        <div style="display: flex; justify-content: space-between; padding-top: 2px;">
+          <a [href]="item.url" target="_blank"><img src="./assets/link.svg" alt="link"></a>
+          <div>{{item.subreddit}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="column-container">
-  <div class="column-title">Column</div>
-
-  <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
-    class="column-list" (cdkDropListDropped)="drop($event)">
-    <div class="item-box" *ngFor="let item of done" cdkDrag>{{item.title}}</div>
+  <div class="column-container">
+    <div class="column-title">Column</div>
+    <div cdkDropList [cdkDropListData]="done" class="column-list" (cdkDropListDropped)="drop($event)">
+      <div class="item-box" *ngFor="let item of done" cdkDrag>{{item.title}}</div>
+    </div>
   </div>
 </div>

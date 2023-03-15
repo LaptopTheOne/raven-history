@@ -1,3 +1,38 @@
+.main-history-container {
+  display: flex;
+}
+
+.subreddit-list-history-container {
+  width: 200px;
+}
+
+.subreddit-list-title{
+  font-size: 20px;
+  padding-top: 4px;
+  padding-bottom: 8px;
+  color: #35DF91;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.subreddit-list-container{
+  height: 800px;
+  background: #1C293B;
+  margin: 0 15px 0 15px;
+}
+
+.subreddit-list-item{
+  padding: 5px;
+  margin-bottom: 2px;
+  height: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  border-bottom: 2px solid #2F4766;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .column-title {
   font-size: 20px;
   padding-top: 4px;
