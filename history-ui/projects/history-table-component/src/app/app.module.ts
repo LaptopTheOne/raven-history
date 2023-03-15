@@ -27,7 +27,8 @@ export abstract class WebComponentModule {
     DragDropModule,
     HistoryTableModule,
   ],
-  entryComponents: [HistoryTableComponent]
+  entryComponents: [HistoryTableComponent],
+  exports: [HistoryTableModule]
 })
 export class AppModule extends WebComponentModule {
 

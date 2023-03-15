@@ -2,10 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 interface SavedItem {
-  subreddit: string,
-  title: string,
-  link_flair_text: string,
-  url: string
+  subreddit?: string | null,
+  title?: string | null,
+  link_flair_text?: string | null,
+  url?: string | null
 }
 
 @Component({
@@ -18,7 +18,9 @@ export class HistoryTableComponent implements OnInit {
   savedItems: SavedItem[] = [];
   done: SavedItem[] = [];
 
-  public ngOnInit(): void { }
+  public ngOnInit(): void {
+    this.savedItems.forEach(item => console.log(item))
+  }
 
   drop(event: CdkDragDrop<SavedItem[]>) {
     if (event.previousContainer === event.container) {

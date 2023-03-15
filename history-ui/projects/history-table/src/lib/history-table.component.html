@@ -1,21 +1,23 @@
-<div class="example-container">
-  <h2>Saved Items:</h2>
+<div class="column-container">
+  <div class="column-title">Column</div>
 
   <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="savedItems" [cdkDropListConnectedTo]="[doneList]"
-    class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of savedItems" cdkDrag>
-      <div>{{item.title}}</div>
-      <div>{{item.subreddit}}/{{item.link_flair_text}}</div>
-      <a [href]="item.url">link</a>
+    class="column-list" (cdkDropListDropped)="drop($event)">
+    <div class="item-box" *ngFor="let item of savedItems" cdkDrag>
+      <div style="overflow-wrap: break-word;">{{item.title}}</div>
+      <div style="display: flex; justify-content: space-between; padding-top: 2px;">
+        <a [href]="item.url" target="_blank"><img src="./assets/link.svg" alt="link"></a>
+        <div>{{item.subreddit}}</div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="example-container">
-  <h2>Done</h2>
+<div class="column-container">
+  <div class="column-title">Column</div>
 
   <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
-    class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.title}}</div>
+    class="column-list" (cdkDropListDropped)="drop($event)">
+    <div class="item-box" *ngFor="let item of done" cdkDrag>{{item.title}}</div>
   </div>
 </div>

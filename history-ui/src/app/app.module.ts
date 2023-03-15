@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
+import { AppModule as HistoryModule } from '../../projects/history-table-component/src/app/app.module';
+
 
 
 @NgModule({
@@ -10,7 +12,8 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HistoryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
