@@ -15,16 +15,41 @@ interface SavedItem {
 })
 export class HistoryTableComponent implements OnInit {
   @Input()
-  savedItems: SavedItem[] = [];
-  done: SavedItem[] = [];
+  savedItems: any = {};
+  redditLists: any = {};
+  maxNumberOfRedditLists = 0;
+  numOfSelectedSubreddits = 0;
 
-  listOfSubreddits = ['subreddit_1', 'subreddit_2', 'subreddit_3', 'subreddit_4', 'subreddit_5', 'subreddit_6',];
+  listOfSubreddits: string[] | null = null;
+  listOfSelectedSubreddits: any[] | null = null;
 
   public ngOnInit(): void {
-    this.savedItems.forEach(item => console.log(item))
+    this.maxNumberOfRedditLists = Math.floor(window.innerWidth / 250) - 1;
+    this.listOfSubreddits = Object.keys(this.savedItems);
+    this.listOfSelectedSubreddits = new Array(this.maxNumberOfRedditLists).fill({
+      subredditName: null,
+      savedItems: null
+    })
   }
 
-  drop(event: CdkDragDrop<SavedItem[]>) {
+  selectSubreddit($event: any) {
+    const checked = $event.target.checked;
+    const value = $event.target.value;
+
+    if (checked) {
+      if (this.numOfSelectedSubreddits == this.maxNumberOfRedditLists) {
+        $event.target.checked = false;
+      } else {
+        this.redditLists[value] = this.savedItems[value];
+        this.numOfSelectedSubreddits++;
+      }
+    } else {
+      this.numOfSelectedSubreddits--;
+      delete this.redditLists[value];
+    }
+  }
+
+  drop(event: CdkDragDrop<any>) {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   }
 }

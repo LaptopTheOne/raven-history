@@ -40,7 +40,7 @@ const fetchAllSavedItems = async function (username, token) {
   }
 
   // extract from data: subreddit, title, link_flair_text, url
-  return savedItems.flat().map((item) => {
+  let flattenedSavedItems = savedItems.flat().map((item) => {
     return {
       subreddit:item.data.subreddit,
       title:item.data.title,
@@ -48,6 +48,14 @@ const fetchAllSavedItems = async function (username, token) {
       url: item.data.url
     }
   });
+
+  return flattenedSavedItems.reduce((groups, item) => {
+      const group = (groups[item.subreddit] || []);
+      group.push(item);
+      groups[item.subreddit] = group;
+      return groups;
+    }, {});
+
 }
 
 exports.fetchAllSavedItems = fetchAllSavedItems;

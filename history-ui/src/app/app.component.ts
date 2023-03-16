@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { data } from './test-data';
+// import { data } from './test-data';
+import { data } from './test-data-grouped';
 
 @Component({
   selector: 'app-root',
