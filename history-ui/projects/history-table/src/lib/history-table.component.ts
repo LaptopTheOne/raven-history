@@ -14,8 +14,14 @@ interface SavedItem {
   styleUrls: ['./history-table.component.css']
 })
 export class HistoryTableComponent implements OnInit {
+  private _savedItems: any = {};
+
   @Input()
-  savedItems: any = {};
+  public set savedItems(items: any) {
+    this._savedItems = items;
+    this.refreshSavedItems();
+  }
+
   redditLists: any = {};
   maxNumberOfRedditLists = 0;
   numOfSelectedSubreddits = 0;
@@ -25,7 +31,11 @@ export class HistoryTableComponent implements OnInit {
 
   public ngOnInit(): void {
     this.maxNumberOfRedditLists = Math.floor(window.innerWidth / 250) - 1;
-    this.listOfSubreddits = Object.keys(this.savedItems);
+    this.refreshSavedItems();
+  }
+
+  refreshSavedItems() {
+    this.listOfSubreddits = Object.keys(this._savedItems);
     this.listOfSelectedSubreddits = new Array(this.maxNumberOfRedditLists).fill({
       subredditName: null,
       savedItems: null
@@ -40,7 +50,7 @@ export class HistoryTableComponent implements OnInit {
       if (this.numOfSelectedSubreddits == this.maxNumberOfRedditLists) {
         $event.target.checked = false;
       } else {
-        this.redditLists[value] = this.savedItems[value];
+        this.redditLists[value] = this._savedItems[value];
         this.numOfSelectedSubreddits++;
       }
     } else {

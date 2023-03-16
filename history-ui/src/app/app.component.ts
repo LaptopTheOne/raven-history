@@ -8,5 +8,13 @@ import { data } from './test-data-grouped';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  testData = data;
+  testData: any = {};
+
+  resetData() {
+    this.testData = {};
+  }
+
+  setData() {
+    this.testData = data;
+  }
 }
