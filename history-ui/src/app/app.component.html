@@ -1,5 +1,5 @@
 <div class="main-container">
   <button (click)="resetData()">reset data</button>
   <button (click)="setData()">set data</button>
-  <lib-history-table [savedItems]="testData"></lib-history-table>
+  <lib-history-table #historyID [savedItems]="testData" [username]="username" [redditHistoryToken]="redditHistoryToken"></lib-history-table>
 </div>

@@ -16,9 +16,15 @@ router.get('/get-saved-items', async (req, res, next) => {
   console.log('req params', req.query)
   const username = req.query['username'];
   const token = req.query['token'];
-  const result = await savedItemsHelpers.fetchAllSavedItems(username, token);
-  res.write(JSON.stringify(result));
-  res.end()
+  try {
+    const result = await savedItemsHelpers.fetchAllSavedItems(username, token);
+    res.write(JSON.stringify(result));
+    res.end()
+  } catch (err) {
+    console.log('error...', err)
+    res.write('error');
+    res.end()
+  }
 });
 
 exports.routes = router;
