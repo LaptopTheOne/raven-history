@@ -8,7 +8,8 @@ import { data } from './test-data-grouped';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  testData: any = {};
+  // testData: any = {};
+  testData: any = data;
   redditHistoryToken: string | null = null;
   username: string | null = null;
 
@@ -18,8 +19,11 @@ export class AppComponent {
     this.redditHistoryToken = null;
   }
 
-  setData() {
-    // this.testData = data;
+  setTestData() {
+    this.testData = data;
+  }
+
+  setRealData() {
     this.username = 'LaptopTheOne';
     this.redditHistoryToken = '44467232--uHfXHNdnzDQESXGhBNDju4mZf-pDA';
   }

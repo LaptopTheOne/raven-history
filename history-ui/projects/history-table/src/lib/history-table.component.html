@@ -1,11 +1,8 @@
 <div class="main-history-container">
-
   <div class="subreddit-list-history-container">
     <div class="subreddit-list-title">Subreddits:</div>
     <div class="subreddit-list-container">
       <div *ngFor="let subreddit of listOfSubreddits" class="subreddit-list-item">
-        <!-- <img src="./assets/show.svg" alt="show" style="height: 16px;"> -->
-        <!-- <img src="./assets/hide.svg" alt="hide" style="height: 20px;"> -->
         <label class="subreddit-toggle">
           <input class="subreddit-toggle-checkbox" type="checkbox" (change)="selectSubreddit($event)"
             [value]="subreddit">
@@ -17,7 +14,6 @@
       </div>
     </div>
   </div>
-
   <div *ngFor="let list of redditLists | keyvalue" class="column-container">
     <div class="column-title">{{list.key}}</div>
     <div cdkDropList [cdkDropListData]="list.value" class="column-list" (cdkDropListDropped)="drop($event)">
@@ -28,7 +24,6 @@
           <div>{{item.subreddit}}</div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
