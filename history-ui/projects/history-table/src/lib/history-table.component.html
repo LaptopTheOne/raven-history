@@ -20,7 +20,7 @@
       <div class="item-box" *ngFor="let item of $any(list.value)" cdkDrag>
         <div style="overflow-wrap: break-word;">{{item.title}}</div>
         <div style="display: flex; justify-content: space-between; padding-top: 2px;">
-          <a [href]="item.url" target="_blank"><img src="./assets/link.svg" alt="link"></a>
+          <a [href]="item.url" target="_blank"><img src="/assets/link.svg" alt="link"></a>
           <div>{{item.subreddit}}</div>
         </div>
       </div>
