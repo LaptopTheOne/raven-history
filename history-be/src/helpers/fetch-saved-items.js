@@ -1,3 +1,4 @@
+const testData = require('./test-data');
 const path = require('path');
 const axios = require('axios');
 
@@ -9,6 +10,10 @@ const generateSavedItemsUrl = function (username) {
 }
 
 const fetchAllSavedItems = async function (username, token) {
+
+  // TEST only
+  // return testData["testData"];
+
   console.log('fetching all saved items...');
   const limitParam = 100;
   const countParam = 100;
