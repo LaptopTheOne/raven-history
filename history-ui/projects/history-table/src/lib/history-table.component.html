@@ -6,11 +6,9 @@
         <label class="subreddit-toggle">
           <input class="subreddit-toggle-checkbox" type="checkbox" (change)="selectSubreddit($event)"
             [value]="subreddit">
+            {{subreddit}}
           <span class="subreddit-toggle-img"></span>
         </label>
-        <div>
-          {{subreddit}}
-        </div>
       </div>
     </div>
   </div>

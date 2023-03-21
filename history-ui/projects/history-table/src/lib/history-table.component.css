@@ -43,8 +43,9 @@
 
 .subreddit-toggle {
   position: relative;
-  width: 24px;
   height: 20px;
+  width: 100%;
+  text-align: end;
 }
 
 .subreddit-toggle .subreddit-toggle-checkbox {
