@@ -9,9 +9,15 @@
     "test": "ng test",
     "build:history-table": "ng build history-table",
     "build:web-component": "npm run build:history-table && rm -rf dist/history-table-component && npm run build:web-component:compile && npm run build:web-component:concat && npm run build:web-component-folder",
-    "build:web-component:compile": "ng run history-table-component:build:production --main='projects/history-table-component/src/app/compile.ts'",
+    "build:web-component:compile": "ng run history-table-component:build:development --main='projects/history-table-component/src/app/compile.ts'",
     "build:web-component:concat": "cat dist/history-table-component/runtime.*.js dist/history-table-component/main.*.js > dist/history-table-component/history-table.js",
-    "build:web-component-folder": "cp dist/history-table-component/history-table.js ./demo-component && cp -r src/assets/ ./demo-component/assets/"
+    "build:web-component-folder": "cp dist/history-table-component/history-table.js ./demo-component && cp -r src/assets/ ./demo-component/assets/",
+
+    "build-prod:history-table": "ng build history-table",
+    "build-prod:web-component": "npm run build-prod:history-table && rm -rf dist/history-table-component && npm run build-prod:web-component:compile && npm run build:web-component:concat && npm run build-prod:web-component-folder",
+    "build-prod:web-component:compile": "ng run history-table-component:build:production --main='projects/history-table-component/src/app/compile.ts'",
+    "build-prod:web-component:concat": "cat dist/history-table-component/runtime.*.js dist/history-table-component/main.*.js > dist/history-table-component/history-table.js",
+    "build-prod:web-component-folder": "cp dist/history-table-component/history-table.js ./demo-component && cp -r src/assets/ ./demo-component/assets/"
   },
   "private": true,
   "dependencies": {

@@ -6,6 +6,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { HistoryTableComponent } from 'projects/history-table/src/public-api';
 import { HistoryTableModule } from 'projects/history-table/src/lib/history-table.module';
+import { environment } from 'src/environments/environment';
 
 // This abstract class is then implemented by our main module. It generates an HTML element
 export abstract class WebComponentModule {
@@ -25,7 +26,9 @@ export abstract class WebComponentModule {
   imports: [
     BrowserModule,
     DragDropModule,
-    HistoryTableModule,
+    HistoryTableModule.forRoot({
+      historyUrl: environment.historyUrl
+    }),
   ],
   entryComponents: [HistoryTableComponent],
   exports: [HistoryTableModule]
