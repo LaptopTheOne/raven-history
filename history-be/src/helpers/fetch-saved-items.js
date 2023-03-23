@@ -11,8 +11,9 @@ const generateSavedItemsUrl = function (username) {
 
 const fetchAllSavedItems = async function (username, token) {
 
-  // TEST only
-  // return testData["testData"];
+  if (process.env.NODE_ENV !== 'production' && process.env.TEST_DATA == 'local') {
+    return testData["testData"];
+  }
 
   console.log('fetching all saved items...');
   const limitParam = 100;

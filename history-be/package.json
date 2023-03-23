@@ -2,9 +2,11 @@
   "name": "history-be",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "start": "nodemon src/app.js",
+    "start-test-data": "TEST_DATA=local nodemon src/app.js",
+    "start-production": "node src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
