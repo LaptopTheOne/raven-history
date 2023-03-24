@@ -61,6 +61,10 @@
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 30px;
 }
 
 .subreddit-toggle-checkbox + .subreddit-toggle-img {
@@ -71,6 +75,7 @@
 .subreddit-toggle-checkbox:checked + .subreddit-toggle-img {
   background-image: url("/assets/hide.svg");
   background-repeat: no-repeat;
+  color: #FAC762;
 }
 
 .column-title {

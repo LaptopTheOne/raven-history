@@ -1,13 +1,12 @@
 <div class="main-history-container">
   <div class="subreddit-list-history-container">
-    <div class="subreddit-list-title">Subreddits:</div>
+    <div class="subreddit-list-title">Subreddits {{numOfSelectedSubreddits}}/{{maxNumberOfRedditLists}}</div>
     <div class="subreddit-list-container">
       <div *ngFor="let subreddit of listOfSubreddits" class="subreddit-list-item">
         <label class="subreddit-toggle">
           <input class="subreddit-toggle-checkbox" type="checkbox" (change)="selectSubreddit($event)"
             [value]="subreddit">
-            {{subreddit}}
-          <span class="subreddit-toggle-img"></span>
+          <span class="subreddit-toggle-img">{{subreddit}}</span>
         </label>
       </div>
     </div>
