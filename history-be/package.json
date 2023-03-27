@@ -2,11 +2,12 @@
   "name": "history-be",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.js",
+  "main": "app.ts",
   "scripts": {
-    "start": "nodemon src/app.js",
-    "start-test-data": "TEST_DATA=local nodemon src/app.js",
-    "start-production": "node src/app.js",
+    "build-tsc": "rm -rf dist && tsc",
+    "start": "npm run build-tsc && nodemon",
+    "start-test-data": "TEST_DATA=local npm run build-tsc && nodemon",
+    "start-production": "npm run build-tsc && node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -18,6 +19,13 @@
     "express": "^4.18.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.21"
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.10",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2"
   }
 }

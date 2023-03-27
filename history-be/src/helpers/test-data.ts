@@ -1,4 +1,4 @@
-const data = {
+export const testData = {
   "rubyonrails": [{
     "subreddit": "rubyonrails",
     "title": "Ryan Bates (Railscasts) has surfaced!",
@@ -1466,4 +1466,4 @@ const data = {
   }]
 }
 
-exports.testData = data;
+// exports.testData = data;
