@@ -12,7 +12,7 @@ function generateSavedItemsUrl(username: string): string {
 export const fetchAllSavedItems = async function (username: string, token: string) {
 
   if (process.env.NODE_ENV !== 'production' && process.env.TEST_DATA == 'local') {
-    return testData["testData"];
+    return testData;
   }
 
   console.log('fetching all saved items...');

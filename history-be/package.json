@@ -6,7 +6,7 @@
   "scripts": {
     "build-tsc": "rm -rf dist && tsc",
     "start": "npm run build-tsc && nodemon",
-    "start-test-data": "TEST_DATA=local npm run build-tsc && nodemon",
+    "start-test-data": "npm run build-tsc && TEST_DATA=local nodemon",
     "start-production": "npm run build-tsc && node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
