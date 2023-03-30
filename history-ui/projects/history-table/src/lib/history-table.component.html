@@ -1,3 +1,9 @@
+<div class="loader-container" *ngIf="spinnerSub | async as loader; else tableBlock">
+  <div class="loader-overlay">
+    <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+</div>
+<ng-template #tableBlock>
 <div class="main-history-container">
   <div class="subreddit-list-history-container">
     <div class="subreddit-list-title">Subreddits {{numOfSelectedSubreddits}}/{{maxNumberOfRedditLists}}</div>
@@ -24,3 +30,4 @@
     </div>
   </div>
 </div>
+</ng-template>

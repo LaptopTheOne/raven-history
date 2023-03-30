@@ -13,13 +13,14 @@ interface SavedItem {
 @Component({
   selector: 'lib-history-table',
   templateUrl: './history-table.component.html',
-  styleUrls: ['./history-table.component.css']
+  styleUrls: ['./history-table.component.css', './loader.css']
 })
 export class HistoryTableComponent implements OnInit, OnDestroy, OnChanges {
   private _savedItems: any = {};
   private _redditHistoryToken: string | null = null;
   private _username: string | null = null;
   subscription: Subscription = new Subscription();
+  spinnerSub: any;
 
   // TO BE REMOVED
   @Input()
@@ -49,7 +50,9 @@ export class HistoryTableComponent implements OnInit, OnDestroy, OnChanges {
   listOfSubreddits: string[] | null = null;
   listOfSelectedSubreddits: any[] | null = null;
 
-  constructor(private historyService: HistoryTableService) { }
+  constructor(private historyService: HistoryTableService) {
+    this.spinnerSub = this.historyService.isLoading;
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -68,6 +71,7 @@ export class HistoryTableComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   refreshSavedItems() {
+    this.historyService.showLoader();
     this.subscription.add(
       this.historyService.getSavedItems(this._username, this._redditHistoryToken).subscribe(result => {
         this._savedItems = result;
@@ -76,8 +80,10 @@ export class HistoryTableComponent implements OnInit, OnDestroy, OnChanges {
           subredditName: null,
           savedItems: null
         })
+        this.historyService.hideLoader();
       }, err => {
         console.log('error', err)
+        this.historyService.hideLoader();
       }))
   }
 

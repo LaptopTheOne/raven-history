@@ -1,3 +1,18 @@
+:host {
+  width: 100%;
+}
+.loader-container {
+  height: 100%;
+  position: relative;
+}
+
+.loader-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .main-history-container {
   display: flex;
   max-height: 100%;

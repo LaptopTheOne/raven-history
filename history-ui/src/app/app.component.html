@@ -2,9 +2,9 @@
   <div class="buttons-section">
     <button (click)="resetData()">reset data</button>
     <button (click)="setTestData()">set test data</button>
+    <button (click)="setRealData()">set real data</button>
   </div>
   <div class="lib-section">
     <lib-history-table #historyID [savedItems]="testData" [username]="username" [redditHistoryToken]="redditHistoryToken"></lib-history-table>
   </div>
-  <!-- <button (click)="setRealData()">set real data</button> -->
 </div>
